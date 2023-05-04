@@ -1,0 +1,13 @@
+.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sidebar {
+    flex: 0%;
+}
+
+.content {
+    flex: 82%;
+}

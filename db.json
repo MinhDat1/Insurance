@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Dat",
+      "email": "ttdat@gmail.com",
+      "password": "123"
+    },
+    {
+      "name": "Trần Minh Đạt",
+      "email": "tdat20010824@gmail.com",
+      "password": "123",
+      "id": 2
+    },
+    {
+      "name": "dat",
+      "email": "mdat2408@gmail.com",
+      "password": "123",
+      "id": 3
+    }
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "name": "some comment",
+      "calories": 1
+      
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
