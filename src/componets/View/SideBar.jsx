@@ -1,10 +1,10 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { Dashboard, Policy } from "@mui/icons-material/";
 import CallIcon from "@mui/icons-material/Call";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import SmsFailedIcon from "@mui/icons-material/SmsFailed";
-import { styled} from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -17,6 +17,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { Link } from "react-router-dom";
+import './SideBar.css';
 
 const drawerWidth = 240;
 
@@ -70,21 +72,22 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer() {
+const SideBars = () => {
   const listSideBar = [
-    { label: "Dashboard", icon: Dashboard, path: "/dashboard" },
-    { label: "Policy History", icon: Policy, path: "/policy" },
-    { label: "Contact us", icon: CallIcon, path: "/contact" },
-    { label: "Rewards", icon: EmojiEventsIcon, path: "/rewards" },
-    { label: "Proposal", icon: ImportContactsIcon, path: "/proposal" },
-    { label: "Service Request", icon: SmsFailedIcon, path: "/services" },
+    { label: "Dashboard", icon: Dashboard, to: "/dashboard" },
+    { label: "Policy History", icon: Policy, to: "/policy" },
+    { label: "Contact us", icon: CallIcon, to: "/contact" },
+    { label: "Rewards", icon: EmojiEventsIcon, to: "/rewards" },
+    { label: "Proposal", icon: ImportContactsIcon, to: "/proposal" },
+    { label: "Service Request", icon: SmsFailedIcon, to: "/services" },
   ];
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleToggle = () => {
     setOpen((prev) => !prev);
   };
+
 
   return (
     <Box
@@ -107,40 +110,41 @@ export default function MiniDrawer() {
           {listSideBar.map((text, index) => {
             const Icon = text.icon;
             return (
-              <div className="list-item">
                 <ListItem
-                key={index}
-                disablePadding
-                sx={{ color: "#29C282", display: "block"}}
-              >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
+                  key={index}
+                  disablePadding
+                  sx={{ color: "#29C282", display: "block" }}
+                  component={Link}
+                  to = {text.to}
                 >
-                  <ListItemIcon
+                  <ListItemButton
                     sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                      color: "#29C282",
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
                     }}
                   >
-                    <Icon />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={text.label}
-                    sx={{ opacity: open ? 1 : 0}}
-                  />
-                </ListItemButton>
-              </ListItem>
-              </div>
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
+                        color: "#29C282",
+                      }}
+                    >
+                      <Icon />
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={text.label}
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </ListItem>
             );
           })}
         </List>
       </Drawer>
     </Box>
   );
-}
+};
+export default SideBars;

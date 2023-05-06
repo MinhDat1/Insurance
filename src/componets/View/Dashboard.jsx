@@ -1,10 +1,9 @@
 import React from "react";
-import SideBar from "./SideBar";
-import Header from "../Header";
+
 import BarChart from "./BarChart";
 import LineChart from "./LineChart";
-import PieChart from "./PieChart";
-import EnhancedTable from "./Table";
+import RadarChart from "./RadarChart";
+import Tables from './Table'
 import { Box, Grid } from "@mui/material";
 
 const Dashboard = () => {
@@ -18,10 +17,10 @@ const Dashboard = () => {
           <LineChart />
         </Grid>
         <Grid item xs={6} md={4}> 
-          <PieChart />
+          <RadarChart />
         </Grid>
         <Grid item xs={6} md={12}>
-          <EnhancedTable />
+          <Tables />
         </Grid>
       </Grid>
     </Box>

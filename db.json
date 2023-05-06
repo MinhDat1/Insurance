@@ -17,6 +17,12 @@
       "email": "mdat2408@gmail.com",
       "password": "123",
       "id": 3
+    },
+    {
+      "name": "laptop",
+      "email": "ttdat1@gmail.com",
+      "password": "123",
+      "id": 4
     }
   ],
   "blogs": [
@@ -24,7 +30,6 @@
       "id": 1,
       "name": "some comment",
       "calories": 1
-      
     }
   ],
   "profile": {

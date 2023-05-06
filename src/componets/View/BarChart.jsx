@@ -1,50 +1,44 @@
-import React from "react";
-import { Bar } from "react-chartjs-2";
-import { Chart, registerables } from "chart.js";
 import { Card } from "@mui/material";
-Chart.register(...registerables);
+import React from "react";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
-function BarChart() {
-  const state = {
-    labels: ["January", "February", "March", "April", "May"],
-    datasets: [
-      {
-        label: "Rainfall",
-        backgroundColor: "rgba(75,192,192,1)",
-        borderColor: "rgba(0,0,0,1)",
-        borderWidth: 2,
-        data: [65, 59, 80, 81, 56],
-      },
-    ],
-  };
+function BarCharts() {
+  const  data = [
+      { name: "A", uv: 4000, pv: 2400 },
+      { name: "B", uv: 3000, pv: 1398 },
+      { name: "C", uv: 2000, pv: 9800 },
+      { name: "D", uv: 2780, pv: 3908 },
+      { name: "E", uv: 1890, pv: 4800 },
+      { name: "F", uv: 2390, pv: 3800 },
+      { name: "G", uv: 3490, pv: 4300 },
+    ]
   return (
-    <div>
-      {/* <Card
-        sx={{
-          width: "400px",
-          height: "240px",
-          marginTop: "20px",
-        }}
-      > */}
-        <Bar
-          width={"400px"}
-          height={"240px"}
-          data={state}
-          options={{
-            title: {
-              display: true,
-              text: "Average Rainfall per month",
-              fontSize: 20,
-            },
-            legend: {
-              display: true,
-              position: "right",
-            },
-          }}
-        />
-      {/* </Card> */}
-    </div>
+    <Card sx={{ width: "350px", height: "190px", marginTop: "20px" }}>
+      <ResponsiveContainer className={"chart"} height={190}>
+        <BarChart
+          data={data}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        >
+          <XAxis dataKey="name" />
+          <YAxis />
+          <CartesianGrid strokeDasharray="3 3" />
+          <Tooltip />
+          <Legend />
+          <Bar type="monotone" dataKey="pv" fill="#ED6C02" />
+          <Bar type="monotone" dataKey="uv" fill="#29C282" />
+        </BarChart>
+      </ResponsiveContainer>
+    </Card>
   );
 }
 
-export default BarChart;
+export default BarCharts;
