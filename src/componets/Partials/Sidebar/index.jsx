@@ -1,20 +1,20 @@
 import React from "react";
-import Header from "../Header";
-import SideBar from "../../View/SideBar";
+import Header from "../Header/Header";
+import SideBar from "./SideBar";
 import "./index.css";
-import { Box } from "@mui/material";
-
 function mainSidebar({ children }) {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column" }}>
+    <>
       <Header />
       <div className="row">
         <div className="sidebar">
           <SideBar />
         </div>
-        <div className="content">{children}</div>
+        <div className="content">
+          {children}
+        </div>
       </div>
-    </Box>
+    </>
   );
 }
 

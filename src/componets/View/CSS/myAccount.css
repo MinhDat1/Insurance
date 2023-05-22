@@ -1,0 +1,89 @@
+.myAcc-breadcrumbs {
+    padding-left: 50px;
+    padding-top: 10px;
+}
+
+.myAcc-breadcrumbs a {
+    text-decoration: none;
+    color: #666;
+}
+
+.myAcc-breadcrumbs a:hover {
+    color: #29C282;
+}
+
+.myAccount {
+    padding: 50px;
+}
+
+.myAcc-form form{
+    border-radius: 25px;
+    padding: 25px;
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 2px 1px 5px rgba(0,0,0,0.26);
+}
+
+.myAcc-form-button {
+    margin-bottom: 10px;
+    background-color: #29C282 !important;
+}
+
+.myAcc-wrapper-card {
+    padding-left: 50px;
+}
+
+.myAcc-profile-card {
+    min-width: 350px ;
+    max-width: 400px ;
+    min-height: 250px ;
+    max-height: 350px ;
+    margin-bottom: 30px ;
+}
+
+.myAcc-profile-img {
+    height: 190px;
+    padding: 20px;
+    border-radius: 25px;   
+}
+
+.myAcc-profile-avatar {
+    width: 90px !important;
+    height: 90px !important;
+    font-size: 40px !important;
+    border: 5px solid #fff;
+}
+
+.myAcc-profile-header {
+    min-width: 300px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    top: -85px;
+    left: 6px;
+}
+
+.myAcc-profile-content{
+    top: -65px;
+    position: relative;
+}
+
+.myAcc-profile-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.myAcc-addImg-button{
+    display: flex;
+    justify-content: left;
+}
+
+.myAcc-changeImg-card {
+    min-width: 350px ;
+    min-height: 100px;
+    max-height: 150px;
+}

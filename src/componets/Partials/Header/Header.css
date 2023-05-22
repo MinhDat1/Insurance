@@ -1,0 +1,23 @@
+.header{
+    position: sticky !important;
+    background-color: #29C282 !important;
+    z-index: 102 !important;
+}
+
+.header-search-button {
+    min-height: 34px !important;
+    display: flex;
+    align-items: center;
+    padding-left: 4.8px;
+    position: relative;
+    font-size: 0.875rem;
+    border-radius: 25px !important;
+    cursor: pointer;
+    transition-property: all !important;
+    transition-duration: 150ms !important;
+}
+
+.header-search-text {
+    margin-left: 8px !important;
+    margin-right: auto !important;
+}

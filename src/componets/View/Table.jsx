@@ -292,11 +292,11 @@ const Tables = () => {
   );
 
   return (
-    <Box sx={{ width: "97%" }}>
-      <Paper sx={{ width: "100%", mb: 2 }}>
+    <Box>
+      <Paper >
         <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
-          <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
+          <Table aria-labelledby="tableTitle">
             <EnhancedTableHead
               numSelected={selected.length}
               order={order}

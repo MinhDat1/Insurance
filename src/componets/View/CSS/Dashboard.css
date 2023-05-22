@@ -1,0 +1,17 @@
+.dashboard-breadcrumbs {
+    padding-left: 50px;
+    padding-top: 10px;
+}
+
+.dashboard-breadcrumbs a {
+    text-decoration: none;
+    color: #666;
+}
+
+.dashboard-breadcrumbs a:hover{
+    color: #29C282;
+}
+
+.dashboard {
+    padding: 50px;
+}

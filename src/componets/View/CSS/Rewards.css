@@ -1,0 +1,42 @@
+.rewards-breadcrumbs {
+    padding-left: 50px;
+    padding-top: 10px;
+}
+
+.rewards-breadcrumbs a {
+    text-decoration: none;
+    color: #666;
+}
+
+.rewards-breadcrumbs a:hover {
+    color: #29C282;
+}
+
+.rewards {
+    padding: 50px;
+}
+
+.rewards-card-select{
+    width: 100%;
+    height: 150px ;
+}
+
+.rewards-button-cancel {
+    width: 80px;
+    height: 40px;
+    margin-top: 50px !important;
+    background-color: #fff !important;
+    color: #333 !important;
+}
+
+.rewards-button-submit {
+    margin-left: 20px !important;
+    margin-top: 50px !important;
+    background-color: #ED6C02 !important;
+}
+
+.rewards-button-select {
+    background-color: #ED6C02 !important;
+    height: 40px !important;
+    color: #fff !important;
+}

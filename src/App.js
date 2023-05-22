@@ -3,26 +3,26 @@ import { Route, Routes } from "react-router-dom";
 import React from "react";
 import Login from "./componets/Login";
 import Dashboard from "./componets/View/Dashboard";
-import PolicyHistory from "./componets/View/PolicyHistory";
+import myAccount from "./componets/View/myAccount";
 import Contact from "./componets/View/Contact";
 import Rewards from "./componets/View/Rewards";
-import Proposal from "./componets/View/Proposal";
-import Services from "./componets/View/Services";
+import Policies from "./componets/View/Policies";
+import Support from "./componets/View/Support";
 import { mainSidebar } from "./componets/Partials";
 function App() {
   const routes = [
     { path: "/", component: Login, layout: null },
     { path: "/login", component: Login, layout: null },
     { path: "/dashboard", component: Dashboard, layout: mainSidebar },
-    { path: "/Policy", component: PolicyHistory, layout: mainSidebar },
+    { path: "/myAccount", component: myAccount, layout: mainSidebar },
     { path: "/contact", component: Contact, layout: mainSidebar },
     { path: "/rewards", component: Rewards, layout: mainSidebar },
-    { path: "/proposal", component: Proposal, layout: mainSidebar },
-    { path: "/services", component: Services, layout: mainSidebar },
+    { path: "/policies", component: Policies, layout: mainSidebar },
+    { path: "/support", component: Support, layout: mainSidebar },
   ];
   // header sidebar => variables =>
   return (
-    <React.Fragment>
+    <React.Fragment> 
       <div className="App">
         <Routes>
           {routes.length > 0 &&

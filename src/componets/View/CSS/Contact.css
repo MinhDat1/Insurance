@@ -1,0 +1,96 @@
+.contact-breadcrumbs{
+    padding-left: 50px;
+    padding-top: 10px;
+}
+
+.contact-breadcrumbs a {
+    color: #666;
+    text-decoration: none;
+}
+
+.contact-breadcrumbs a:hover{
+    color: #29C282;
+}
+
+.contact {
+    padding: 50px;
+}
+
+.contact-info {
+    margin-bottom: 150px !important;
+}
+
+.contact-info .css-2ulfj5-MuiTypography-root {
+    padding-bottom: 10px;
+}
+
+.contact-info .css-d3wcwz-MuiTypography-root a{
+    color: #29C282;
+}
+
+
+.contact-form form {
+    border-radius: 25px;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 2px 1px 5px rgba(0,0,0,0.26);
+}
+
+.contact-form-button {
+    margin-top: 20px !important;
+    background-color: #29C282 !important;
+}
+
+.contact-map{
+    margin-top: 20px !important;
+    background-color: #29C282 !important;
+}
+
+.contact-map a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.contact-img {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px !important;
+}
+
+.contact-img img{
+    height: 350px;
+    border-radius: 25px;
+    box-shadow: 1px 2px 5px rgba(0,0,0,0.26);
+}
+
+.contact-group-card .css-1mktp8m-MuiTypography-root {
+    text-align: center;
+    padding: 20px;
+}
+
+.contact-card {
+    width: 365px;
+    height: 365px;
+    padding: 20px;
+    border-radius: 25px !important;
+    box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.15);
+}
+
+.contact-avatar {
+    width: 70px !important;
+    height: 70px !important;
+    margin-bottom: 20px;
+}
+
+.contact-card .css-18k87ye-MuiTypography-root a {
+    color: #29C282;
+}
+
+.contact-card .css-h93ljk-MuiTypography-root a {
+    text-decoration: none;
+    color: #29C282;
+}
+
+.contact-card .css-h93ljk-MuiTypography-root {
+    margin-top: 50px;
+}

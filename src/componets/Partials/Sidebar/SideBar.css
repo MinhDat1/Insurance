@@ -1,0 +1,18 @@
+.css-1m5i5w0-MuiButtonBase-root-MuiListItemButton-root:hover {
+    color: #29C282 !important;
+}
+
+.css-1nxmd3h-MuiListItem-root{
+    color: #29C282 ;
+    display: block;
+}
+
+.list-logout{
+    height: 310px;
+    position: relative !important;
+}
+
+.logout-button{
+    position: absolute !important;
+    bottom: 0px;
+}

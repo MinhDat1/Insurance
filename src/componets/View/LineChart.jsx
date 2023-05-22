@@ -23,12 +23,9 @@ function LineCharts() {
   ];
 
   return (
-    <Card sx={{ width: "350px", height: "190px", marginTop: "20px" }}>
-      <ResponsiveContainer className={"chart"} height={190}>
-        <LineChart
-          data={database}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
+    <Card >
+      <ResponsiveContainer className={"chart"} height={240}>
+        <LineChart data={database}>
           <XAxis dataKey="name" />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
