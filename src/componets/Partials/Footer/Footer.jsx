@@ -117,7 +117,7 @@ function Footer() {
             </Typography>
           </Grid>
           <Grid item xs={4} className="footer-logo">
-            <img src={img1} alt="" />
+            <img src={img1} alt="" loading="lazy" />
           </Grid>
         </Grid>
       </Box>

@@ -8,7 +8,6 @@ import {
   RadarChart,
   ResponsiveContainer,
 } from "recharts";
-// import './CSS/RadarChart.css'
 
 function RadarCharts() {
   const data = [

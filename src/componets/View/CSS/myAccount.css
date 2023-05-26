@@ -17,7 +17,7 @@
 }
 
 .myAcc-form form{
-    border-radius: 25px;
+    border-radius: 8px;
     padding: 25px;
     width: 90%;
     background-color: #fff;
@@ -77,9 +77,9 @@
     white-space: nowrap;
 }
 
-.myAcc-addImg-button{
-    display: flex;
-    justify-content: left;
+.myAcc-changeImg-button svg{
+    color: #333;
+    margin-right: 10px;
 }
 
 .myAcc-changeImg-card {

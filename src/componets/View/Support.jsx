@@ -204,10 +204,6 @@ function Services() {
             <TextField
               id="search-bar"
               className="text"
-              // onInput={(e) => {
-              //   setSearchQuery(e.target.value);
-              // }}
-
               variant="outlined"
               placeholder="Search..."
               size="medium"
@@ -244,8 +240,8 @@ function Services() {
                 customCard.map((card, index) => {
                   return (
                     <Card className="slide" key={index}>
-                      <CardMedia component="img" alt="" image={card.img} />
-                      <CardContent>
+                      <CardMedia component="img" alt="" image={card.img} loading="lazy"/>
+                      <CardContent className="ftr-card-content">
                         <Typography gutterBottom>
                           <Link>{card.label}</Link>
                         </Typography>
@@ -299,6 +295,8 @@ function Services() {
         <Typography variant="h6" gutterBottom>
           Find more help on <Link>our blog</Link>
         </Typography>
+      </div>
+      <div className="footer-page">
         <Footer />
       </div>
     </>

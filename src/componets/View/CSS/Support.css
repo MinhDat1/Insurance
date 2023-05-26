@@ -36,6 +36,11 @@
 
 }
 
+.ftr-card-content a{
+    text-decoration: none;
+    color: #29C282;
+}
+
 .slideshowDots {
     text-align: center;
     margin: 0 auto;
@@ -64,9 +69,13 @@
 
 .support-footer {
     padding: 50px;
-    margin-top: 150px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     text-align: center;
+}
+
+.footer-page{
+    padding: 50px;
 }
   

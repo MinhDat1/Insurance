@@ -1,4 +1,5 @@
 import {
+  Autocomplete,
   Box,
   Breadcrumbs,
   Button,
@@ -9,9 +10,6 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
-  InputLabel,
-  MenuItem,
-  Select,
   Stack,
   Tab,
   Tabs,
@@ -38,7 +36,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 5 }}>
-          <Typography>{children}</Typography>
+          <>{children}</>
         </Box>
       )}
     </div>
@@ -64,29 +62,33 @@ function Rewards() {
   };
 
   const insuredItem = [
-    { id: "1", value: "health", name: "Health Insurance" },
-    { id: "2", value: "life", name: "Life Insurance" },
-    { id: "3", value: "disability", name: "Disability Insurance" },
-    { id: "4", value: "auto", name: "Auto Insurance" },
+    { id: "1", label: "Health Insurance" },
+    { id: "2", label: "Life Insurance" },
+    { id: "3", label: "Disability Insurance" },
+    { id: "4", label: "Auto Insurance" },
     {
       id: "5",
-      value: "homeowners and renters",
-      name: "Homeowners and Renters Insurance",
+      label: "Homeowners and Renters Insurance",
     },
   ];
 
   const claimFor = [
-    { id: "1", value: "person", name: "Person" },
-    { id: "2", value: "animals", name: "Animals" },
-    { id: "3", value: "car", name: "Car" },
-    { id: "4", value: "money", name: "Money" },
-    { id: "5", value: "house", name: "House" },
-    { id: "6", value: "householdItems", name: "Household Items" },
+    { id: "1", label: "Person" },
+    { id: "2", label: "Animals" },
+    { id: "3", label: "Car" },
+    { id: "4", label: "Money" },
+    { id: "5", label: "House" },
+    { id: "6", label: "Household Items" },
   ];
 
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
+
+  const onCancel = () => {
+    setValue(0);
+  };
+
   return (
     <>
       <Breadcrumbs aria-label="breadcrumb" className="rewards-breadcrumbs">
@@ -97,8 +99,8 @@ function Rewards() {
         <Box
           sx={{
             backgroundColor: "#fff",
-            borderRadius: "25px",
-            boxShadow: "1px 2px 2px rgba(0,0,0,0.26)",
+            borderRadius: "8px",
+            boxShadow: "2px 1px 5px rgba(0,0,0,0.26)",
           }}
         >
           <Tabs
@@ -113,35 +115,22 @@ function Rewards() {
           <TabPanel value={value} index={0}>
             <form>
               <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
-                <FormControl fullWidth>
-                  <InputLabel id="select-label">
-                    Selected Insured Item
-                  </InputLabel>
-                  <Select
-                    value={value.insuredItem}
-                    label="Selected Insured Item"
-                  >
-                    {insuredItem.map((item, index) => {
-                      return (
-                        <MenuItem key={index} value={item.value}>
-                          {item.name}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                </FormControl>
-                <FormControl fullWidth>
-                  <InputLabel id="select-label">Claim For</InputLabel>
-                  <Select value={value.claimFor} label="Claim For">
-                    {claimFor.map((claim, index) => {
-                      return (
-                        <MenuItem key={index} value={claim.value}>
-                          {claim.name}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                </FormControl>
+                <Autocomplete
+                  disablePortal
+                  options={insuredItem}
+                  fullWidth
+                  renderInput={(params) => (
+                    <TextField {...params} placeholder="Select Insured Item" />
+                  )}
+                />
+                <Autocomplete
+                  disablePortal
+                  options={claimFor}
+                  fullWidth
+                  renderInput={(params) => (
+                    <TextField {...params} placeholder="Claim for" />
+                  )}
+                />
               </Stack>
               <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
                 <FormControl fullWidth>
@@ -162,56 +151,33 @@ function Rewards() {
               <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
                 <TextField
                   type="text"
-                  color="success"
-                  label="Message*"
+                  placeholder="Accident Address*"
                   fullWidth
                   sx={{ mb: 4 }}
-                  // value={value.message}
-                  // onChange={(e) => {
-                  //   setValue({ ...value, message: e.target.value });
-                  //   refCommon.message = e.target.value;
-                  // }}
-                  // error={errMessage}
-                  // helperText={errMessage ? "Please fill out this field" : ""}
                   multiline
                   minRows={4}
                 />
                 <TextField
                   type="text"
-                  color="success"
-                  label="Message*"
+                  placeholder="How did the accident happen?*"
                   fullWidth
                   sx={{ mb: 4 }}
-                  // value={value.message}
-                  // onChange={(e) => {
-                  //   setValue({ ...value, message: e.target.value });
-                  //   refCommon.message = e.target.value;
-                  // }}
-                  // error={errMessage}
-                  // helperText={errMessage ? "Please fill out this field" : ""}
                   multiline
                   minRows={4}
                 />
               </Stack>
               <FormGroup>
                 <FormControlLabel
-                  control={
-                    <Checkbox
-                      color="success"
-                      // value={checkbox.value}
-                      // onChange={(checkbox) => {
-                      //   handleChangeCheckBox(checkbox);
-                      // }}
-                    />
-                  }
+                  control={<Checkbox color="success" />}
                   label="I confirm that the information that I have supplied is true, and understand any mis-information may effect the outcome of my claim"
                 />
               </FormGroup>
               <Box display="flex" flexDirection="row" justifyContent="right">
                 <Button
                   variant="contained"
-                  type="submit"
+                  type="button"
                   className="rewards-button-cancel"
+                  onClick={onCancel}
                 >
                   Cancel
                 </Button>
@@ -229,66 +195,48 @@ function Rewards() {
           <TabPanel value={value} index={1}>
             <form>
               <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
-                <FormControl fullWidth>
-                  <InputLabel id="select-label">
-                    Selected Insured Item
-                  </InputLabel>
-                  <Select
-                    value={value.insuredItem}
-                    label="Selected Insured Item"
-                  >
-                    {insuredItem.map((item, index) => {
-                      return (
-                        <MenuItem key={index} value={item.value}>
-                          {item.name}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                </FormControl>
-                <FormControl fullWidth>
-                  <InputLabel id="select-label">Claim For</InputLabel>
-                  <Select value={value.claimFor} label="Claim For">
-                    {claimFor.map((claim, index) => {
-                      return (
-                        <MenuItem key={index} value={claim.value}>
-                          {claim.name}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                </FormControl>
+                <Autocomplete
+                  disablePortal
+                  options={insuredItem}
+                  fullWidth
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      placeholder="Select a loved one covered by your funeral policy"
+                    />
+                  )}
+                />
+                <Autocomplete
+                  disablePortal
+                  options={claimFor}
+                  fullWidth
+                  renderInput={(params) => (
+                    <TextField {...params} placeholder="Claim for" />
+                  )}
+                />
               </Stack>
               <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
                 <FormControl fullWidth>
                   <DatePicker
                     onChange={onChange}
-                    style={{ height: "50px" }}
-                    placeholder="Incident Date"
+                    style={{ height: "50px", border: "1px solid black" }}
+                    placeholder="Date of Death"
                   />
                 </FormControl>
                 <FormControl fullWidth>
                   <TimePicker
                     onChange={onChange}
-                    style={{ height: "50px" }}
-                    placeholder="Incident Time"
+                    style={{ height: "50px", border: "1px solid black" }}
+                    placeholder="Time of Death"
                   />
                 </FormControl>
               </Stack>
               <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
                 <TextField
                   type="text"
-                  color="success"
-                  label="Message*"
+                  placeholder="would you like provide any additional information?"
                   fullWidth
                   sx={{ mb: 4 }}
-                  // value={value.message}
-                  // onChange={(e) => {
-                  //   setValue({ ...value, message: e.target.value });
-                  //   refCommon.message = e.target.value;
-                  // }}
-                  // error={errMessage}
-                  // helperText={errMessage ? "Please fill out this field" : ""}
                   multiline
                   minRows={4}
                 />
@@ -316,16 +264,12 @@ function Rewards() {
               </Stack>
               <FormGroup>
                 <FormControlLabel
-                  control={
-                    <Checkbox
-                      color="success"
-                      // value={checkbox.value}
-                      // onChange={(checkbox) => {
-                      //   handleChangeCheckBox(checkbox);
-                      // }}
-                    />
-                  }
-                  label="I confirm that the information that I have supplied is true, and understand any mis-information may effect the outcome of my claim"
+                  control={<Checkbox color="success" />}
+                  label="I acknowledge that the funds will be paid into the account John Smith "
+                />
+                <FormControlLabel
+                  control={<Checkbox color="success" />}
+                  label="I confirm that the information that I have supplied is true, understand that any mis-information may effect the outcome of my claim"
                 />
               </FormGroup>
               <Box display="flex" flexDirection="row" justifyContent="right">

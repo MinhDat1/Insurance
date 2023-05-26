@@ -30,10 +30,10 @@
 
 
 .contact-form form {
-    border-radius: 25px;
+    border-radius: 8px;
     padding: 40px;
     background-color: #fff;
-    box-shadow: 2px 1px 5px rgba(0,0,0,0.26);
+    box-shadow: 2px 1px 5px 2px rgba(0,0,0,0.26);
 }
 
 .contact-form-button {
@@ -59,8 +59,8 @@
 
 .contact-img img{
     height: 350px;
-    border-radius: 25px;
-    box-shadow: 1px 2px 5px rgba(0,0,0,0.26);
+    border-radius: 8px;
+    box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.26);
 }
 
 .contact-group-card .css-1mktp8m-MuiTypography-root {
@@ -72,7 +72,7 @@
     width: 365px;
     height: 365px;
     padding: 20px;
-    border-radius: 25px !important;
+    border-radius: 8px !important;
     box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.15);
 }
 

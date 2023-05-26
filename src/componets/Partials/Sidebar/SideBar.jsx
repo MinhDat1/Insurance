@@ -24,6 +24,9 @@ import ListItemText from "@mui/material/ListItemText";
 import { Link } from "react-router-dom";
 import { Tooltip } from "@mui/material";
 import "./SideBar.css";
+import { logout, useAuthDispatch } from "../../../store/";
+import { useNavigate } from "react-router-dom";
+
 
 const drawerWidth = 240;
 
@@ -138,6 +141,13 @@ const SideBars = () => {
     setOpen((prev) => !prev);
   };
 
+  const dispatch = useAuthDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logout(dispatch);
+    navigate("/login")
+  };
+
   return (
     <Box>
       <CssBaseline />
@@ -189,9 +199,10 @@ const SideBars = () => {
         <List className="list-logout">
           <ListItem
             disablePadding
-            component={Link}
-            to="/login"
+            // component={Link}
+            // to="/login"
             className="logout-button"
+            onClick={handleLogout}
           >
             <ListItemButton
               sx={{

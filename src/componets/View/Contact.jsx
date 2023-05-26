@@ -13,7 +13,6 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
-// import "./CSS/Contact.css";
 import img from "../images/TMA.png";
 import { ArrowRightAlt } from "@mui/icons-material";
 import { deepOrange } from "@mui/material/colors";
@@ -182,180 +181,172 @@ function Contact() {
         className="contact"
       >
         <Grid item xs={6} className="contact-info">
-            <Typography variant="h3" gutterBottom>
-              <b>Get in Touch</b>
-            </Typography>
-            <Typography gutterBottom>
-              Have a question? Concern? Request? We'd love to hear from you.
-              Connect with us through the following ways.
-            </Typography>
-            <Typography variant="h6">Address: </Typography>
-            <Typography>31 Hayward St, Ste J</Typography>
-            <Typography gutterBottom>Franklin, MA 02038 </Typography>
-            <Typography variant="h6">Phone: </Typography>
-            <Typography gutterBottom> 508-528-5200 </Typography>
-            <Typography variant="h6">Fax</Typography>
-            <Typography gutterBottom>508-520-6914</Typography>
-            <Typography variant="h6">Email:</Typography>
-            <Typography gutterBottom>
-              <Link to="/">ContactUs@tma.com</Link>
-            </Typography>
-            <Typography variant="h6">Text: </Typography>
-            <Typography gutterBottom> 508-528-5200 </Typography>
-            <Typography variant="h6">
-              {" "}
-              24-hour emergency claims line:{" "}
-            </Typography>
-            <Typography gutterBottom> 508-528-5200 </Typography>
-            <Typography variant="h6">Online chat: </Typography>
-            <Typography>
-              {" "}
-              Located at bottom right corner of our website{" "}
-            </Typography>
-            <Typography gutterBottom>
-              (you'll be chatting with our Director)
-            </Typography>
-            <Typography variant="h6"> Video chat: </Typography>
-            <Typography gutterBottom>
-              {" "}
-              Contact us to set up a video appointment{" "}
-            </Typography>
-            <Typography variant="h6">Hours: </Typography>
-            <Typography gutterBottom>
-              {" "}
-              8 a.m. to 4 p.m., Monday-Friday{" "}
-            </Typography>
-            <Typography variant="h6">Social: </Typography>
-            <Typography gutterBottom>
-              Connect with us on <Link to="https://facebook.com">Facebook</Link>{" "}
-              or <Link to="https://LinkedIn.com">LinkedIn</Link>
-            </Typography>
+          <Typography variant="h3" gutterBottom>
+            <b>Get in Touch</b>
+          </Typography>
+          <Typography gutterBottom>
+            Have a question? Concern? Request? We'd love to hear from you.
+            Connect with us through the following ways.
+          </Typography>
+          <Typography variant="h6">Address: </Typography>
+          <Typography>31 Hayward St, Ste J</Typography>
+          <Typography gutterBottom>Franklin, MA 02038 </Typography>
+          <Typography variant="h6">Phone: </Typography>
+          <Typography gutterBottom> 508-528-5200 </Typography>
+          <Typography variant="h6">Fax</Typography>
+          <Typography gutterBottom>508-520-6914</Typography>
+          <Typography variant="h6">Email:</Typography>
+          <Typography gutterBottom>
+            <Link to="/">ContactUs@tma.com</Link>
+          </Typography>
+          <Typography variant="h6">Text: </Typography>
+          <Typography gutterBottom> 508-528-5200 </Typography>
+          <Typography variant="h6"> 24-hour emergency claims line: </Typography>
+          <Typography gutterBottom> 508-528-5200 </Typography>
+          <Typography variant="h6">Online chat: </Typography>
+          <Typography>
+            {" "}
+            Located at bottom right corner of our website{" "}
+          </Typography>
+          <Typography gutterBottom>
+            (you'll be chatting with our Director)
+          </Typography>
+          <Typography variant="h6"> Video chat: </Typography>
+          <Typography gutterBottom>
+            {" "}
+            Contact us to set up a video appointment{" "}
+          </Typography>
+          <Typography variant="h6">Hours: </Typography>
+          <Typography gutterBottom>
+            {" "}
+            8 a.m. to 4 p.m., Monday-Friday{" "}
+          </Typography>
+          <Typography variant="h6">Social: </Typography>
+          <Typography gutterBottom>
+            Connect with us on <Link to="https://facebook.com">Facebook</Link>{" "}
+            or <Link to="https://LinkedIn.com">LinkedIn</Link>
+          </Typography>
         </Grid>
         <Grid item xs={6} className="contact-form">
-            <form onSubmit={handleSubmit}>
-              <Typography variant="h5" gutterBottom>
-                <b>
-                  Fill out out this short form and a member of our team will get
-                  back to you within 24 hours
-                </b>
-              </Typography>
-              <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
-                <TextField
-                  type="text"
-                  color="success"
-                  label="First Name*"
-                  fullWidth
-                  value={value.firstName}
-                  onChange={(e) => {
-                    setValue({ ...value, firstName: e.target.value });
-                    refCommon.firstName = e.target.value;
-                  }}
-                  error={errFirstName}
-                  helperText={errFirstName ? "Please fill out this field" : ""}
-                />
-                <TextField
-                  type="text"
-                  color="success"
-                  label="Last Name*"
-                  fullWidth
-                  value={value.lastName}
-                  onChange={(e) => {
-                    setValue({ ...value, lastName: e.target.value });
-                    refCommon.lastName = e.target.value;
-                  }}
-                  error={errLastName}
-                  helperText={errLastName ? "Please fill out this field" : ""}
-                />
-              </Stack>
+          <form onSubmit={handleSubmit}>
+            <Typography variant="h5" gutterBottom>
+              <b>
+                Fill out out this short form and a member of our team will get
+                back to you within 24 hours
+              </b>
+            </Typography>
+            <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
               <TextField
-                type="email"
-                color="success"
-                label="Email*"
+                type="text"
+                placeholder="First Name*"
                 fullWidth
-                sx={{ mb: 4 }}
-                value={value.email}
+                value={value.firstName}
                 onChange={(e) => {
-                  setValue({ ...value, email: e.target.value });
-                  refCommon.email = e.target.value;
+                  setValue({ ...value, firstName: e.target.value });
+                  refCommon.firstName = e.target.value;
                 }}
-                error={errEmail || regexEmail}
-                helperText={
-                  errEmail
-                    ? "Please fill out this field"
-                    : regexEmail &&
-                      "Please include an '@[a-zA-z].[a-zA-Z]' in email address"
-                }
-              />
-              <TextField
-                type="tel"
-                color="success"
-                label="Phone Number*"
-                fullWidth
-                sx={{ mb: 4 }}
-                value={value.phoneNumber}
-                onChange={(e) => {
-                  setValue({ ...value, phoneNumber: e.target.value });
-                  refCommon.phoneNumber = e.target.value;
-                }}
-                error={errPhoneNumber || regexPhone}
-                helperText={
-                  errPhoneNumber
-                    ? "Please fill out this field"
-                    : regexPhone && "Phone Number must have 10 number"
-                }
+                error={errFirstName}
+                helperText={errFirstName ? "Please fill out this field" : ""}
               />
               <TextField
                 type="text"
-                color="success"
-                label="Message*"
+                placeholder="Last Name*"
                 fullWidth
-                sx={{ mb: 4 }}
-                value={value.message}
+                value={value.lastName}
                 onChange={(e) => {
-                  setValue({ ...value, message: e.target.value });
-                  refCommon.message = e.target.value;
+                  setValue({ ...value, lastName: e.target.value });
+                  refCommon.lastName = e.target.value;
                 }}
-                error={errMessage}
-                helperText={errMessage ? "Please fill out this field" : ""}
-                multiline
-                minRows={4}
+                error={errLastName}
+                helperText={errLastName ? "Please fill out this field" : ""}
               />
-              <Typography gutterBottom>
-                {" "}
-                How do you prefer to communicate with us?
-              </Typography>
-              <FormGroup>
-                {checkboxList &&
-                  checkboxList.map((checkbox, index) => {
-                    return (
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            color="success"
-                            value={checkbox.value}
-                            onChange={(checkbox) => {
-                              handleChangeCheckBox(checkbox);
-                            }}
-                          />
-                        }
-                        label={checkbox.label}
-                        key={index}
-                      />
-                    );
-                  })}
-                {!isValidCheckbox && <span>Please check this field</span>}
-              </FormGroup>
-              <Button
-                variant="contained"
-                type="submit"
-                className="contact-form-button"
-              >
-                Contact Us
-              </Button>
-            </form>
+            </Stack>
+            <TextField
+              type="email"
+              placeholder="Email*"
+              fullWidth
+              sx={{ mb: 4 }}
+              value={value.email}
+              onChange={(e) => {
+                setValue({ ...value, email: e.target.value });
+                refCommon.email = e.target.value;
+              }}
+              error={errEmail || regexEmail}
+              helperText={
+                errEmail
+                  ? "Please fill out this field"
+                  : regexEmail &&
+                    "Please include an '@[a-zA-z].[a-zA-Z]' in email address"
+              }
+            />
+            <TextField
+              type="tel"
+              placeholder="Phone Number*"
+              fullWidth
+              sx={{ mb: 4 }}
+              value={value.phoneNumber}
+              onChange={(e) => {
+                setValue({ ...value, phoneNumber: e.target.value });
+                refCommon.phoneNumber = e.target.value;
+              }}
+              error={errPhoneNumber || regexPhone}
+              helperText={
+                errPhoneNumber
+                  ? "Please fill out this field"
+                  : regexPhone && "Phone Number must have 10 number"
+              }
+            />
+            <TextField
+              type="text"
+              placeholder="Message*"
+              fullWidth
+              sx={{ mb: 4 }}
+              value={value.message}
+              onChange={(e) => {
+                setValue({ ...value, message: e.target.value });
+                refCommon.message = e.target.value;
+              }}
+              error={errMessage}
+              helperText={errMessage ? "Please fill out this field" : ""}
+              multiline
+              minRows={4}
+            />
+            <Typography gutterBottom>
+              {" "}
+              How do you prefer to communicate with us?
+            </Typography>
+            <FormGroup>
+              {checkboxList &&
+                checkboxList.map((checkbox, index) => {
+                  return (
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          color="success"
+                          value={checkbox.value}
+                          onChange={(checkbox) => {
+                            handleChangeCheckBox(checkbox);
+                          }}
+                        />
+                      }
+                      label={checkbox.label}
+                      key={index}
+                    />
+                  );
+                })}
+              {!isValidCheckbox && <span>Please check this field</span>}
+            </FormGroup>
+            <Button
+              variant="contained"
+              type="submit"
+              className="contact-form-button"
+            >
+              Contact Us
+            </Button>
+          </form>
         </Grid>
         <Grid item xs={6} className="contact-img">
-            <img src={img} alt="" />
+          <img src={img} alt="" loading="lazy" />
         </Grid>
         <Grid item xs={6}>
           <Box sx={{ mb: 10 }}>
@@ -390,10 +381,7 @@ function Contact() {
           </Box>
         </Grid>
         <Grid item xs={12} className="contact-group-card">
-          <Typography
-            variant="h3"
-            gutterBottom
-          >
+          <Typography variant="h3" gutterBottom>
             <b>Looking for someone specific?</b>
           </Typography>
           <Box
@@ -406,10 +394,7 @@ function Contact() {
           >
             {employees.map((employee, index) => {
               return (
-                <Card
-                  className="contact-card"
-                  key={index}
-                >
+                <Card className="contact-card" key={index}>
                   <Avatar
                     sx={{
                       bgcolor: deepOrange[500],

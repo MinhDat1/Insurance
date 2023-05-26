@@ -1,9 +1,17 @@
-import { Box, Button, Modal, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Modal,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import img from "./images/TMAInsurance.png";
 import img1 from "./images/TMA-logo2.png";
+import { loginUser, useAuthDispatch, useAuthState } from "../store";
+import { green } from "@mui/material/colors";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,20 +22,17 @@ const Login = () => {
     job: "",
   });
   const [isSignup, setIsSignup] = useState(false);
-  const [userData, setUserData] = useState();
   const [open, setOpen] = useState(false);
   const [recoveryPass, setRecoveryPass] = useState(" ");
+  const data = useAuthState();
 
-  const url = "http://localhost:3001/users";
   useEffect(() => {
-    async function fetchingData() {
-      const res = await axios.get(url);
-      if (res && res.data.length > 0) {
-        setUserData(res.data);
-      }
+    if (data.message == "Success") {
+      navigate("/dashboard");
+    } else {
+      return;
     }
-    fetchingData();
-  }, []);
+  }, [data]);
 
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -36,40 +41,12 @@ const Login = () => {
     }));
   };
 
-  async function handleLogin(type) {
-    const checkExist = userData.find((users) => users.email == inputs.email);
-    if (type == "signup") {
-      if (checkExist == undefined) {
-        const res = await axios.post(
-          url,
-          {
-            id: Math.random().toString(),
-            name: inputs.name,
-            email: inputs.email,
-            password: inputs.password,
-            job: inputs.job,
-          },
-          { withCredentials: true }
-        );
-        if (res.status == 201 || res.status == 200) {
-          navigate("/dashboard");
-        }
-      }
-    } else {
-      if (checkExist != undefined) {
-        const data = userData.find((x) => x.email == inputs.email);
-        if (data != undefined) {
-          if (data.password == inputs.password) {
-            navigate("/dashboard");
-          }
-        }
-      }
-    }
-  }
+  const dispatch = useAuthDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    isSignup ? handleLogin("signup") : handleLogin("login");
+
+    loginUser(dispatch, { email: inputs.email, password: inputs.password });
   };
 
   const handleForgotPass = () => {
@@ -77,6 +54,7 @@ const Login = () => {
   };
   const handleClose = () => {
     setOpen(false);
+    setRecoveryPass("");
   };
 
   return (
@@ -91,11 +69,11 @@ const Login = () => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            boxShadow: " 4px 2px 4px #333",
+            boxShadow: " 4px 2px 4px rgba(0,0,0,0.55)",
             padding: 3,
             marginLeft: 20,
             marginTop: 15,
-            borderRadius: 5,
+            borderRadius: "8px",
             background: "#fff",
           }}
         >
@@ -184,7 +162,7 @@ const Login = () => {
                   fullWidth
                 />
                 <Button
-                  type="submit"
+                  type="button"
                   variant="contained"
                   sx={{ borderRadius: 3, marginTop: 3 }}
                   color="warning"
@@ -196,14 +174,35 @@ const Login = () => {
               </form>
             </Box>
           </Modal>
-          <Button
-            type="submit"
-            variant="contained"
-            sx={{ borderRadius: 3, marginTop: 3 }}
-            color="warning"
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              position: "relative",
+            }}
           >
-            Submit
-          </Button>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ borderRadius: 3, marginTop: 3 }}
+              color="warning"
+            >
+              Submit
+            </Button>
+            {!isSignup && data.loading == true && (
+              <CircularProgress
+                size={24}
+                sx={{
+                  color: green[500],
+                  position: "absolute",
+                  top: "55%",
+                  left: "50%",
+                  marginTop: "-3px",
+                  marginLeft: "55px",
+                }}
+              />
+            )}
+          </div>
           <Button
             onClick={() => setIsSignup(!isSignup)}
             sx={{ borderRadius: 3, marginTop: 3 }}

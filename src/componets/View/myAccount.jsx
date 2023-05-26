@@ -1,4 +1,5 @@
 import {
+  Autocomplete,
   Avatar,
   Breadcrumbs,
   Button,
@@ -6,12 +7,7 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
-  FormControl,
   Grid,
-  IconButton,
-  InputLabel,
-  MenuItem,
-  Select,
   Stack,
   TextField,
   Typography,
@@ -23,6 +19,7 @@ import { Image } from "@mui/icons-material";
 import { Footer } from "../Partials";
 import "./CSS/myAccount.css";
 import { Link } from "react-router-dom";
+import { useAuthDispatch, useAuthState } from "../../store";
 
 function MyAccount() {
   const [value, setValue] = useState({
@@ -68,30 +65,9 @@ function MyAccount() {
   const [errCity, setErrCity] = useState(false);
   const [regexPhone, setRegexPhone] = useState(false);
   const [regexEmail, setRegexEmail] = useState(false);
-
-  // const url = "http://localhost:3001/users";
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [userData, setUserData] = useState();
+  const data = useAuthState();
 
   useEffect(() => {
-    // async function fetchingData() {
-    //   const res = await axios.get(url, { withCredentials: true });
-    //   if (res && res.data.length > 0) {
-    //     setUserData(res.data);
-    //   }
-    // }
-
-    // async function checkLogin() {
-    //   const res = await axios.get(url, { withCredentials: true });
-    //   if(res && res.data.loggedIn == true){
-    //     setIsLoggedIn(true);
-    //     setUserData(res.data);
-    //   }
-    // }
-
-    // checkLogin();
-
-    // fetchingData();
 
     refCommon.firstName !== undefined &&
       setErrFirstName(value.firstName.length <= 0);
@@ -150,26 +126,6 @@ function MyAccount() {
       setErrCity(true);
     } else {
       alert("Updated");
-      // const url = 'http://localhost:3001/users';
-      // fetch(url, {
-      //   method: "PUT",
-      //   headers: {
-      //     "content-type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     firstName: value.firstName,
-      //     lastName: value.lastName,
-      //     email: value.email,
-      //     phone: value.phone,
-      //     address: value.address,
-      //     addressNumber: value.addressNumber,
-      //     city: value.city,
-      //     id: Math.random().toString(),
-      //   }),
-      // }).then(function (res) {
-      //   console.log(res);
-      //   return res.json();
-      // });
     }
   };
 
@@ -189,7 +145,7 @@ function MyAccount() {
                 <TextField
                   type="text"
                   color="primary"
-                  label="First Name*"
+                  placeholder="First Name*"
                   fullWidth
                   value={value.firstName}
                   onChange={(e) => {
@@ -202,7 +158,7 @@ function MyAccount() {
                 <TextField
                   type="text"
                   color="primary"
-                  label="Last Name*"
+                  placeholder="Last Name*"
                   fullWidth
                   value={value.lastName}
                   onChange={(e) => {
@@ -213,28 +169,20 @@ function MyAccount() {
                   helperText={errLastName ? "Please fill out this field" : ""}
                 />
               </Stack>
-              <FormControl fullWidth sx={{ marginBottom: 4 }}>
-                <InputLabel id="gender-select-label">Gender</InputLabel>
-                <Select
-                  labelId="gender-select-label"
-                  id="gender-select"
-                  value={value.gender}
-                  label="Gender"
-                >
-                  {genders.map((gender, index) => {
-                    return (
-                      <MenuItem key={index} value={gender.value}>
-                        {gender.label}
-                      </MenuItem>
-                    );
-                  })}
-                </Select>
-              </FormControl>
+              <Autocomplete
+                  disablePortal
+                  options={genders}
+                  fullWidth
+                  renderInput={(params) => (
+                    <TextField {...params} placeholder="Gender" />
+                  )}
+                  sx={{ marginBottom: 4 }}
+                />
               <Stack spacing={2} direction="row" sx={{ marginBottom: 4 }}>
                 <TextField
                   type="email"
                   color="primary"
-                  label="Email*"
+                  placeholder="Email*"
                   fullWidth
                   value={value.email}
                   onChange={(e) => {
@@ -252,7 +200,7 @@ function MyAccount() {
                 <TextField
                   type="tel"
                   color="primary"
-                  label="Phone*"
+                  placeholder="Phone*"
                   fullWidth
                   value={value.phone}
                   onChange={(e) => {
@@ -275,7 +223,7 @@ function MyAccount() {
                   <TextField
                     type="text"
                     color="primary"
-                    label="Address*"
+                    placeholder="Address*"
                     fullWidth
                     value={value.address}
                     onChange={(e) => {
@@ -290,7 +238,7 @@ function MyAccount() {
                   <TextField
                     type="number"
                     color="primary"
-                    label="Number*"
+                    placeholder="Number*"
                     fullWidth
                     value={value.addressNumber}
                     onChange={(e) => {
@@ -308,7 +256,7 @@ function MyAccount() {
                 <TextField
                   type="text"
                   color="primary"
-                  label="City*"
+                  placeholder="City*"
                   fullWidth
                   value={value.city}
                   onChange={(e) => {
@@ -318,27 +266,19 @@ function MyAccount() {
                   error={errCity}
                   helperText={errCity ? "Please fill out this field" : ""}
                 />
-                <FormControl fullWidth>
-                  <InputLabel id="bank-select-label">Bank</InputLabel>
-                  <Select
-                    labelId="bank-select-label"
-                    id="bank-select"
-                    value={value.bank}
-                    label="Bank"
-                  >
-                    {banks.map((bank, index) => {
-                      return (
-                        <MenuItem key={index} value={bank.value}>
-                          {bank.label}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                </FormControl>
+                <Autocomplete
+                  disablePortal
+                  options={banks}
+                  fullWidth
+                  renderInput={(params) => (
+                    <TextField {...params} placeholder="Bank" />
+                  )}
+                  sx={{ marginBottom: 4 }}
+                />
                 <TextField
                   type="number"
                   color="primary"
-                  label="Account Number"
+                  placeholder="Account Number"
                   fullWidth
                   value={value.accNumber}
                   onChange={(e) => {
@@ -356,18 +296,15 @@ function MyAccount() {
             </form>
         </Grid>
         <Grid item xs={4} className="myAcc-wrapper-card">
-          {/* {isLoggedIn &&
-            userData.map((data, index) => {
-              return ( */}
           <Card
             className="myAcc-profile-card"
-            // key={index}
           >
             <CardMedia
               component="img"
               alt=""
               image={img}
               className="myAcc-profile-img"
+              loading="lazy"
             />
             <CardHeader
               avatar={
@@ -381,8 +318,8 @@ function MyAccount() {
                   D
                 </Avatar>
               }
-              title="User Name"
-              subheader="Front-end Developer"
+              title={data.name}
+              subheader={data.job}
               className="myAcc-profile-header"
             />
             <CardContent className="myAcc-profile-content">
@@ -406,9 +343,7 @@ function MyAccount() {
             <CardHeader title="Select Profile Photo" />
             <CardContent>
               <Button className="myAcc-changeImg-button">
-                <IconButton>
                   <Image />
-                </IconButton>
                 <Typography
                   variant="subtitle2"
                   color="text.secondary"

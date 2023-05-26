@@ -13,6 +13,20 @@
       "email": "mdat2408@gmail.com",
       "password": "123",
       "job": "FE Dev"
+    },
+    {
+      "id": "0.09916718753160159",
+      "name": "Đạt",
+      "email": "mdat2408@gmail.com",
+      "password": "1234",
+      "job": "FE Dev"
+    },
+    {
+      "id": "0.09916718753160159",
+      "name": "Đạt09",
+      "email": "mdat2408@gmail.com",
+      "password": "1235",
+      "job": "FE Dev"
     }
   ],
   "contact": [
@@ -23,38 +37,6 @@
       "phoneNumber": "1234567892",
       "message": "asdasd",
       "id": "0.7085205158071544"
-    },
-    {
-      "firstName": "Minh ",
-      "lastName": "Dat",
-      "email": "dat@gmail.com",
-      "phoneNumber": "1234567892",
-      "message": "123123",
-      "id": "0.9649154225652807"
-    },
-    {
-      "firstName": "Minh ",
-      "lastName": "Dat",
-      "email": "dat@gmail.com",
-      "phoneNumber": "1234567892",
-      "message": "ASDAASD",
-      "id": "0.5105773843195629"
-    },
-    {
-      "firstName": "Minh ",
-      "lastName": "Dat",
-      "email": "dat@gmail.com",
-      "phoneNumber": "1234567892",
-      "message": "asdasd",
-      "id": "0.0724022536920701"
-    },
-    {
-      "firstName": "Minh ",
-      "lastName": "Dat",
-      "email": "dat@gmail.com",
-      "phoneNumber": "1234567892",
-      "message": "asdasd",
-      "id": "0.8079911602451717"
     }
   ],
   "employees": [
@@ -82,5 +64,8 @@
       "email": "tdat@tma.com",
       "phoneNumber": "0708129068"
     }
+  ],
+  "Policies": [
+    {}
   ]
 }
